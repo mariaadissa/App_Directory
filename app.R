@@ -89,6 +89,11 @@ ui <- navbarPage(title = "Iris dataset",
                                      
                                        plotOutput("boxplot")
                                      
+                            ),
+                            tabPanel(title = "Density plot",
+                                     
+                                     plotlyOutput("densityoutput")
+                                     
                             )
                  )
                  
@@ -147,6 +152,20 @@ server <- function(input, output){
     # facet_grid(iris$Species)
   })
   
+  # density plot
+  output$densityoutput <- renderPlotly({
+    fig <- plot_ly(x=iris[,"Sepal.Length"],y=iris[,"Sepal.Width"]) %>% 
+      add_histogram2dcontour(showscale=TRUE, ncontours=20, colorscale='Viridis', 
+                             contours = list(coloring='heatmap')) %>%
+      add_markers(x = iris[,"Sepal.Length"], y = iris[,"Sepal.Width"], marker=list(size=3))
+   fig <- fig %>% layout(
+     title = "Iris",
+     xaxis = list(title = "Sepal.Length"),
+     yaxis = list(title = "Sepal.Width")
+   )
+   fig
+    
+  })
   
 }
 

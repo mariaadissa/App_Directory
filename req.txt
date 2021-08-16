@@ -1,9 +1,0 @@
-1. Different pages for each type of plot CHECKED
-2. put inputs in the grey thing (wellPanel) CHECKED
-3. Add LISIC img next to Iris title if possible.
-4. Plots:
-	-Scatter plot (Add zoom functionality)
-	-Affichage 3D (find out how to add the plot inside the shiny app not just a pop up window
-					+ add colors)
-	-k-means (add legend for colors)
-	-Classification ?
